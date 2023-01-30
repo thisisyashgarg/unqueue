@@ -1,25 +1,25 @@
 export const DOMAIN_DATA = [
   {
     id: 937,
-    name: "Hospitals",
+    name: "Hospital",
     image:
       "https://res.cloudinary.com/dwwtffefs/image/upload/v1675100541/unqueue/undraw_doctors_p6aq_ed9gqf.svg",
   },
   {
     id: 796,
-    name: "Banks",
+    name: "Bank",
     image:
       "https://res.cloudinary.com/dwwtffefs/image/upload/v1675101129/unqueue/undraw_savings_re_eq4w_fveuhy.svg",
   },
   {
     id: 287,
-    name: "Government Offices",
+    name: "Government Office",
     image:
       "https://res.cloudinary.com/dwwtffefs/image/upload/v1675100543/unqueue/undraw_working_re_ddwy_1_omsbsq.svg",
   },
   {
     id: 198,
-    name: "Food Chains",
+    name: "Food Chain",
     image:
       "https://res.cloudinary.com/dwwtffefs/image/upload/v1675100543/unqueue/undraw_breakfast_psiw_svocfd.svg",
   },
