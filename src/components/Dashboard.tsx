@@ -5,8 +5,8 @@ import PeopleInQueue from "./PeopleInQueue";
 
 export default function Dashboard() {
   return (
-    <div>
-      <PeopleInQueue />
+    <div className="grid grid-cols-2 pt-10">
+      <PeopleInQueue/>
       <AvgWaitingTime />
     </div>
   );
