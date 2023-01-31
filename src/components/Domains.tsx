@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { DOMAIN_DATA } from "../data";
+import Heading from "./Heading";
 
 export default function Domains() {
   return (
     <>
-      <h2 className="text-4xl font-semibold text-center py-6 text-gray-600">
-        Choose you Domain
-      </h2>
+      <Heading heading="Choose your domain" />
       <main className="flex flex-wrap mx-10 justify-center ">
-        {/* yaha 7 domains map karke daal denge */}
         {DOMAIN_DATA.map((domain) => {
           return (
             <a
