@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import Domains from "./components/Domains";
 import Navbar from "./components/Navbar";
 import AdminRegistration from "./components/AdminRegistration";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import AvgWaitingTime from "./components/AvgWaitingTime";
 import Dashboard from "./components/Dashboard";
 import HomePage from "./components/HomePage";
 
@@ -12,11 +11,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <AdminRegistration />
-      {/* <Dashboard />
-     
-      <Domains /> */}
-      {/* <HomePage /> */}
+      <Outlet />
     </>
   );
 }
@@ -25,7 +20,21 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // all children go into outlet
+    children: [
+      { path: "/", element: <HomePage /> },
+      {
+        path: "/domains",
+        element: <Domains />,
+      },
+      {
+        path: "/admin",
+        element: <AdminRegistration />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+    ],
   },
 ]);
 
