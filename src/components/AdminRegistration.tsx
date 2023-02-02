@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ButtonCTA from "./ButtonCTA";
 import Heading from "./Heading";
 import InputField from "./InputField";
@@ -10,11 +11,12 @@ export default function AdminRegistration() {
     orgName: "",
     email: "",
   });
+  const navigate = useNavigate();
 
   async function postAdminFormData(e) {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/submitAdminForm", adminForm);
+      await axios.post("http://localhost:3000/submit/admin", adminForm);
     } catch (error) {
       console.error(error);
     }
@@ -25,7 +27,10 @@ export default function AdminRegistration() {
       <Heading heading="Admin Registration" />
       <form
         className="flex flex-col space-y-4 py-10"
-        onSubmit={postAdminFormData}
+        onSubmit={(e) => {
+          postAdminFormData(e);
+          navigate("/dashboard");
+        }}
       >
         <InputField
           label="Organisation Name *"
@@ -42,7 +47,7 @@ export default function AdminRegistration() {
           onChange={() => handleChange(setAdminForm)}
           name="email"
         />
-        <ButtonCTA text="Register" />
+        <ButtonCTA text="Register " />
       </form>
     </div>
   );

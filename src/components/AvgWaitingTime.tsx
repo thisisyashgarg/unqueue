@@ -19,7 +19,7 @@ export default function AvgWaitingTime() {
   async function postQID(e) {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/submitQID", QID);
+      await axios.post("http://localhost:3000/submit/qid", QID);
     } catch (error) {
       console.error(error);
     }
