@@ -74,26 +74,16 @@ export default function AdminRegistration() {
           >
             {showPassword ? "Hide" : "Show"}
           </button>
-        </div>
 
-        <div className="flex">
+        </div>
           <InputField
             label="Password *"
             input="********"
             value={adminForm.ConfirmPassword}
             onChange={() => handleChange(setAdminForm)}
             name="ConfirmPassword"
-            type={showPassword ? "text" : "password"}
+            type="password"
           />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="text-sm"
-          >
-            {showPassword ? "Hide" : "Show"}
-          </button>
-        </div>
-
         <ButtonCTA text="Register " />
 
       </form>
