@@ -20,9 +20,7 @@ export default function AvgWaitingTime() {
     <div className="grid grid-cols justify-center ">
       <div className="flex flex-col justify-center">
         <Heading heading="Average Waiting Time" />
-        <h2 className="text-2xl text-center">
-          <p> 10 mins / person </p>
-        </h2>
+        <h2 className="text-2xl text-center text-gray-600">10 mins / person</h2>
       </div>
 
       <form className="pt-12 " onSubmit={(e) => postQID(e, QID)}>
