@@ -10,6 +10,8 @@ export default function AdminRegistration() {
   const [adminForm, setAdminForm] = useState({
     orgName: "",
     email: "",
+    password: "",
+    ConfirmPassword : ""
   });
   const navigate = useNavigate();
 
@@ -28,8 +30,13 @@ export default function AdminRegistration() {
       <form
         className="flex flex-col space-y-4 py-10"
         onSubmit={(e) => {
-          postAdminFormData(e);
-          navigate("/dashboard");
+          if (adminForm.password === adminForm.ConfirmPassword) {
+            postAdminFormData(e);
+            navigate("/dashboard");
+          } else {
+            // Show an error message or alert to the user
+            alert("Password and Confirm Password must be same.");
+          }
         }}
       >
         <InputField
@@ -46,6 +53,21 @@ export default function AdminRegistration() {
           value={adminForm.email}
           onChange={() => handleChange(setAdminForm)}
           name="email"
+        />
+          <InputField
+          label="Password*"
+          input="********"
+          value={adminForm.password}
+          onChange={() => handleChange(setAdminForm)}
+          name="password"
+        />
+
+          <InputField
+          label="Confirm Password*"
+          input="********"
+          value={adminForm.ConfirmPassword}
+          onChange={() => handleChange(setAdminForm)}
+          name="ConfirmPassword"
         />
         <ButtonCTA text="Register " />
       </form>

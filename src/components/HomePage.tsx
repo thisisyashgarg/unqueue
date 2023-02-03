@@ -15,8 +15,11 @@ export default function HomePage() {
         <li> • Receive turn notifications</li>
         <li> • Convenient and efficient</li>
       </ul>
-
+        
+        <a href="./Domains">
       <ButtonCTA text="Get Started" />
+      </a>
+
     </div>
   );
 }
