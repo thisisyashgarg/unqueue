@@ -1,6 +1,13 @@
 import React from "react";
 
-export default function InputField({ label, input, value, onChange, name }) {
+export default function InputField({
+  label,
+  input,
+  value,
+  onChange,
+  name,
+  type,
+}) {
   return (
     <label className="flex flex-col p-4">
       <p className="font-semibold p-1">{label} </p>
@@ -10,6 +17,7 @@ export default function InputField({ label, input, value, onChange, name }) {
         value={value}
         onChange={onChange}
         name={name}
+        type={type}
       />
     </label>
   );

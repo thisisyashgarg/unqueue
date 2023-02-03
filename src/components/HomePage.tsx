@@ -2,6 +2,7 @@ import logo from "../images/homepage.svg";
 import React from "react";
 import ButtonCTA from "./ButtonCTA";
 import Heading from "./Heading";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
@@ -15,11 +16,10 @@ export default function HomePage() {
         <li> • Receive turn notifications</li>
         <li> • Convenient and efficient</li>
       </ul>
-        
-        <a href="./Domains">
-      <ButtonCTA text="Get Started" />
-      </a>
 
+      <Link to="/domains">
+        <ButtonCTA text="Get Started" />
+      </Link>
     </div>
   );
 }

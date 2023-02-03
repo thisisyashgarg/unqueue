@@ -6,6 +6,7 @@ import AdminRegistration from "./components/AdminRegistration";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import HomePage from "./components/HomePage";
+import LoginPage from "./components/LoginPage";
 
 function App() {
   return (
@@ -33,6 +34,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
       },
     ],
   },

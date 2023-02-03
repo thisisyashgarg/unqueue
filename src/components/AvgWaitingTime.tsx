@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import ButtonCTA from "./ButtonCTA";
 import Heading from "./Heading";
 import InputField from "./InputField";
-import axios from "axios";
 import { handleChange } from "../utils/helper";
+import { postQID } from "../utils/postForms";
 
 export default function AvgWaitingTime() {
   // const [waitingTime, setWaitingTime] = React.useState(0);
@@ -16,15 +16,6 @@ export default function AvgWaitingTime() {
     qidValue: "",
   });
 
-  async function postQID(e) {
-    e.preventDefault();
-    try {
-      await axios.post("http://localhost:3000/submit/qid", QID);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   return (
     <div className="grid grid-cols justify-center ">
       <div className="flex flex-col justify-center">
@@ -34,13 +25,14 @@ export default function AvgWaitingTime() {
         </h2>
       </div>
 
-      <form className="pt-12 " onSubmit={postQID}>
+      <form className="pt-12 " onSubmit={(e) => postQID(e, QID)}>
         <InputField
           label="QID of the User *"
           input="QID"
           value={QID.qidValue}
           name="qidValue"
           onChange={() => handleChange(setQID)}
+          type="text"
         />
 
         <ButtonCTA text="Add User" />

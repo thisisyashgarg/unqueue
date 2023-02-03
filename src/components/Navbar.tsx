@@ -12,7 +12,9 @@ export default function Navbar() {
         <h1 className="font-semibold text-3xl px-3 text-gray-600">UnQueue</h1>
       </Link>
       {currentRoute.pathname === "/dashboard" && (
-        <h2 className="text-xl font-normal">Logout</h2>
+        <Link to="/login">
+          <h2 className="text-xl font-normal">Logout</h2>
+        </Link>
       )}
     </nav>
   );
