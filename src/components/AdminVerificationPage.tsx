@@ -5,7 +5,7 @@ import email from "../images/email.svg";
 export default function AdminVerification() {
   return (
     <div className="grid place-items-center py-12 bg-sky-500">
-      <div className="grid grid-col place-items-center text-center rounded-2xl shadow-xl w-8/12 p-10 pt-20 bg-white">
+        <div className="grid grid-col place-items-center text-center rounded-2xl shadow-xl w-8/12 p-10 pt-20 bg-white">
         <Heading heading="Verify your email" />
         <p className="text-xl">
           Your need to verify your email to complete registration
