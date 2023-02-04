@@ -7,9 +7,11 @@ import {
   signOut,
   sendSignInLinkToEmail,
 } from "firebase/auth";
+import dotenv from 'dotenv'
+dotenv.config();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCbf2VhleTZS_ma0c2gK_jl0ojoCF_CCaA",
+  apiKey: process.env.apikey,
   authDomain: "unqueue-548b5.firebaseapp.com",
   databaseURL: "https://unqueue-548b5-default-rtdb.firebaseio.com",
   projectId: "unqueue-548b5",
