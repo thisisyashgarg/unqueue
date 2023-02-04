@@ -17,17 +17,6 @@ export default function PeopleInQueue() {
       { name: "Shauryam Saxena", qid: "HOS1234" },
       { name: "Shauryam Saxena", qid: "HOS1234" },
       { name: "Shauryam Saxena", qid: "HOS1234" },
-      { name: "Shauryam Saxena", qid: "HOS1234" },
-      { name: "Shauryam Saxena", qid: "HOS1234" },
-      { name: "Shauryam Saxena", qid: "HOS1234" },
-      { name: "Shauryam Saxena", qid: "HOS1234" },
-      { name: "Shauryam Saxena", qid: "HOS1234" },
-      { name: "Shauryam Saxena", qid: "HOS1234" },
-      { name: "Shauryam Saxena", qid: "HOS1234" },
-      { name: "Shauryam Saxena", qid: "HOS1234" },
-      { name: "Shauryam Saxena", qid: "HOS1234" },
-      { name: "Shauryam Saxena", qid: "HOS1234" },
-      { name: "Shauryam Saxena", qid: "HOS1234" },
     ];
     //ps: this is a dummy data
     setPeopleInQueue(dataFromAPI);

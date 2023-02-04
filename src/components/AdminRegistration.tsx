@@ -6,6 +6,7 @@ import InputField from "./InputField";
 import axios from "axios";
 import { handleChange } from "../utils/helper";
 
+
 export default function AdminRegistration() {
   const [adminForm, setAdminForm] = useState({
     orgName: "",
@@ -59,23 +60,23 @@ export default function AdminRegistration() {
           type={'text'}
         />
           <div className="flex">
-          <InputField
-            label="Password *"
-            input="********"
-            value={adminForm.password}
-            onChange={() => handleChange(setAdminForm)}
-            name="password"
-            type={showPassword ? "text" : "password"}
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="text-sm"
-          >
-            {showPassword ? "Hide" : "Show"}
-          </button>
+  <InputField
+    label="Password *"
+    input="********"
+    value={adminForm.password}
+    onChange={() => handleChange(setAdminForm)}
+    name="password"
+    type={showPassword ? "text" : "password"}
+  />
+  <button
+    type="button"
+    onClick={() => setShowPassword(!showPassword)}
+    className="text-sm"
+  >
+    {showPassword ?"hide"  :"show"}
+  </button>
+</div>
 
-        </div>
           <InputField
             label="Password *"
             input="********"
