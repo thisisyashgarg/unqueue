@@ -6,7 +6,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import dotenv from "dotenv";
+dotenv.config();
 
 const firebaseConfig = {
   apiKey: "AIzaSyCbf2VhleTZS_ma0c2gK_jl0ojoCF_CCaA",

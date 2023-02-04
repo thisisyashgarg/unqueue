@@ -41,6 +41,7 @@ export default function AdminRegistration() {
           name="orgName"
           type="text"
           minLength=""
+          autoComplete="organisation-name"
         />
 
         <InputField
@@ -51,6 +52,7 @@ export default function AdminRegistration() {
           name="email"
           type="email"
           minLength=""
+          autoComplete="email-id"
         />
         {/* <div className="flex "> */}
         <InputField
@@ -61,7 +63,7 @@ export default function AdminRegistration() {
           name="password"
           type="password"
           minLength="8"
-
+          autoComplete="new-password"
           // type={showPassword ? "text" : "password"}
         />
         {/* <button
@@ -81,6 +83,7 @@ export default function AdminRegistration() {
           name="ConfirmPassword"
           type="password"
           minLength="8"
+          autoComplete="confirm-password"
         />
         <ButtonCTA text="Register" />
       </form>

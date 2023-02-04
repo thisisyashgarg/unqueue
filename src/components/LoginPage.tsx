@@ -20,15 +20,16 @@ export default function LoginPage() {
         className="flex flex-col space-y-4 py-10"
         method="POST"
         onSubmit={async (e) => {
-          try {
-            const user = await signInUserWithEmailPass(
-              loginForm.email,
-              loginForm.password
-            );
+          const user = await signInUserWithEmailPass(
+            loginForm.email,
+            loginForm.password
+          );
+          if (user !== null) {
             navigate("/dashboard");
-          } catch (err) {
-            console.log(err);
+          } else {
+            navigate("/error");
           }
+
           //   navigate("/dashboard");
           // now check if user is valid, if yes, then redirect to dashboard, otherwise 403
         }}
@@ -41,6 +42,7 @@ export default function LoginPage() {
           name="email"
           type="email"
           minLength=""
+          autoComplete="email-id"
         />
 
         <InputField
@@ -51,6 +53,7 @@ export default function LoginPage() {
           name="password"
           type="password"
           minLength="8"
+          autoComplete="password"
         />
 
         <ButtonCTA text="Login" />
