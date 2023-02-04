@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
+import AdminVerification from "./components/AdminVerificationPage";
 
 function App() {
   return (
@@ -39,6 +40,11 @@ const appRouter = createBrowserRouter([
         path: "/login",
         element: <LoginPage />,
       },
+      {
+        path: "/emailsent",
+        element:<AdminVerification />
+
+      }
     ],
   },
 ]);
