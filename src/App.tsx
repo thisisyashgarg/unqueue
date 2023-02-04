@@ -1,31 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Domains from "./components/Domains";
 import Navbar from "./components/Navbar";
+import Error from "./components/Error";
 import AdminRegistration from "./components/AdminRegistration";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  useNavigate,
+} from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import AdminVerification from "./components/AdminVerificationPage";
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function App() {
-  // let home = <HomePage />;
-  // const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const auth = getAuth();
 
-  // useEffect(() => {
-  //   const auth = getAuth();
-
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       const uid = user.uid;
-  //       navigate("/dashboard");
-  //     } else {
-  //       navigate("/login");
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log(user);
+      if (user === null) {
+        console.log(user);
+        navigate("/");
+      }
+    });
+  }, []);
 
   return (
     <>
@@ -39,6 +43,7 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       { path: "/", element: <HomePage /> },
       {
@@ -60,6 +65,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/emailsent",
         element: <AdminVerification />,
+      },
+      {
+        path: "/error",
+        element: <Error />,
       },
     ],
   },

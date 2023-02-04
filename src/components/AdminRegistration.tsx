@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ButtonCTA from "./ButtonCTA";
 import Heading from "./Heading";
 import InputField from "./InputField";
 import { handleChange } from "../utils/helper";
-import { postAdminFormData } from "../utils/postForms";
 import { signUpUserWithEmailPass } from "../data/Auth";
 
 export default function AdminRegistration() {
@@ -83,8 +82,18 @@ export default function AdminRegistration() {
           type="password"
           minLength="8"
         />
-        <ButtonCTA text="Register " />
+        <ButtonCTA text="Register" />
       </form>
+      <h1 className="pb-8 font-semibold text-3xl text-gray-500">or</h1>
+
+      <a>
+        <button
+          onClick={() => navigate("/login")}
+          className="px-48 py-5 rounded-md text-white font-semibold primary-color text-center hover:bg-sky-500 active:bg-sky-600"
+        >
+          Login
+        </button>
+      </a>
     </div>
   );
 }

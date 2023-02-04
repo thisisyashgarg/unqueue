@@ -19,8 +19,16 @@ export default function LoginPage() {
       <form
         className="flex flex-col space-y-4 py-10"
         method="POST"
-        onSubmit={(e) => {
-          signInUserWithEmailPass(loginForm.email, loginForm.password);
+        onSubmit={async (e) => {
+          try {
+            const user = await signInUserWithEmailPass(
+              loginForm.email,
+              loginForm.password
+            );
+            navigate("/dashboard");
+          } catch (err) {
+            console.log(err);
+          }
           //   navigate("/dashboard");
           // now check if user is valid, if yes, then redirect to dashboard, otherwise 403
         }}
@@ -47,6 +55,17 @@ export default function LoginPage() {
 
         <ButtonCTA text="Login" />
       </form>
+
+      <h1 className="pb-8 font-semibold text-3xl text-gray-500">or</h1>
+
+      <a>
+        <button
+          onClick={() => navigate("/domains")}
+          className="px-48 py-5 rounded-md text-white font-semibold primary-color text-center hover:bg-sky-500 active:bg-sky-600"
+        >
+          Sign Up
+        </button>
+      </a>
     </div>
   );
 }

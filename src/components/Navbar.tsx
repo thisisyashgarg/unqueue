@@ -1,9 +1,11 @@
 import React from "react";
 import Logo from "../images/logo unqueue.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { logOut } from "../data/Auth";
 
 export default function Navbar() {
   const currentRoute = useLocation();
+  const navigate = useNavigate();
 
   return (
     <nav className="flex justify-between p-3 border border-b-gray-200">
@@ -12,9 +14,17 @@ export default function Navbar() {
         <h1 className="font-semibold text-3xl px-3 text-gray-600">UnQueue</h1>
       </Link>
       {currentRoute.pathname === "/dashboard" && (
-        <Link to="/login">
-          <h2 className="text-xl font-normal">Logout</h2>
-        </Link>
+        <a
+          onClick={() => {
+            const isLoggedOut = logOut();
+            if (isLoggedOut) {
+              navigate("/login");
+            }
+          }}
+          className="text-xl font-normal cursor-pointer hover:font-medium"
+        >
+          Logout
+        </a>
       )}
     </nav>
   );

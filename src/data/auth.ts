@@ -4,7 +4,9 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCbf2VhleTZS_ma0c2gK_jl0ojoCF_CCaA",
@@ -22,16 +24,17 @@ const fireApp = initializeApp(firebaseConfig);
 const auth = getAuth(fireApp);
 
 export async function signInUserWithEmailPass(email: string, password: string) {
+  console.log("sigin func");
   await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
       console.log(user);
+      return user;
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-
       console.log(errorMessage, errorCode);
     });
 }
@@ -46,7 +49,18 @@ export async function signUpUserWithEmailPass(email: string, password: string) {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-
       console.log(errorMessage, errorCode);
+    });
+}
+
+export async function logOut() {
+  const auth = getAuth();
+  signOut(auth)
+    .then(() => {
+      console.log("logged out succesfully");
+      return true;
+    })
+    .catch((error) => {
+      console.log(error);
     });
 }

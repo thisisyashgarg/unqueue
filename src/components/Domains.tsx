@@ -8,10 +8,11 @@ export default function Domains() {
     <>
       <Heading heading="Choose your domain" />
       <main className="flex flex-wrap mx-10 justify-center ">
-        {DOMAIN_DATA.map((domain) => {
+        {DOMAIN_DATA.map((domain, index) => {
           return (
             <Link
               to="/admin"
+              key={index}
               className="flex flex-col py-4 bg-gray-50 border border-gray-300 m-4 p-4 rounded-md w-60 h-56 hover:shadow-lg "
             >
               <img src={domain.image} className="w-56 h-36" />
