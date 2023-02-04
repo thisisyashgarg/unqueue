@@ -4,7 +4,7 @@ import ButtonCTA from "./ButtonCTA";
 import Heading from "./Heading";
 import InputField from "./InputField";
 import { handleChange } from "../utils/helper";
-import { signUpUserWithEmailPass } from "../data/Auth";
+import { signUpUserWithEmailPass , emailAuthLink } from "../data/Auth";
 
 export default function AdminRegistration() {
   const [adminForm, setAdminForm] = useState({
@@ -21,14 +21,12 @@ export default function AdminRegistration() {
     <div className="flex flex-col items-center p-10">
       <Heading heading="Admin Registration" />
       <form 
-      action=""
-        method="POST"
         className="flex flex-col space-y-4 py-10"
-        method="POST"
         onSubmit={(e) => {
           if (adminForm.password === adminForm.ConfirmPassword) {
             signUpUserWithEmailPass(adminForm.email, adminForm.password);
             navigate("/emailsent");
+            emailAuthLink(adminForm.email);
           } else {
             // Show an error message or alert to the user
             alert("Password and Confirm Password must be same.");
