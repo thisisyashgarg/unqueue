@@ -24,10 +24,27 @@ const firebaseConfig = {
 const fireApp = initializeApp(firebaseConfig);
 const auth = getAuth(fireApp);
 
+export const actionCodeSettings = {
+  // URL you want to redirect back to. The domain (www.example.com) for this
+  // URL must be in the authorized domains list in the Firebase Console.
+  url: "http://localhost:1234/dashboard",
+  // This must be true.
+  handleCodeInApp: true,
+  iOS: {
+    bundleId: "com.example.ios",
+  },
+  android: {
+    packageName: "com.example.android",
+    installApp: true,
+    minimumVersion: "12",
+  },
+  dynamicLinkDomain: "unqueue.page.link",
+};
+
 export { auth };
 export async function signInUserWithEmailPass(email: string, password: string) {
   console.log("sigin func called");
-  return signInWithEmailAndPassword(auth, email, password)
+  await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       console.log(user);

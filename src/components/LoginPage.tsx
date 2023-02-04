@@ -4,8 +4,7 @@ import Heading from "./Heading";
 import InputField from "./InputField";
 import ButtonCTA from "./ButtonCTA";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, signInUserWithEmailPass } from "../data/Auth";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 
 export default function LoginPage() {
   const [loginForm, setLoginForm] = useState({
@@ -14,6 +13,7 @@ export default function LoginPage() {
   });
 
   const navigate = useNavigate();
+  const auth = getAuth();
 
   return (
     <div className="flex flex-col items-center p-10">
@@ -21,13 +21,25 @@ export default function LoginPage() {
       <form
         className="flex flex-col space-y-4 py-10"
         method="POST"
-        onSubmit={() => {
-          let user = signInUserWithEmailPass(
+        onSubmit={async () => {
+          await signInWithEmailAndPassword(
+            auth,
             loginForm.email,
             loginForm.password
-          );
-          console.log(user);
-          navigate("/dashboard");
+          )
+            .then((userCredential) => {
+              console.log("called ");
+              const user = userCredential.user;
+              console.log(user);
+              navigate("/dashboard");
+              return user;
+            })
+            .catch((error) => {
+              alert("Please check your email id or password");
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log(errorMessage, errorCode);
+            });
         }}
       >
         <InputField
