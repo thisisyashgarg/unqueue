@@ -35,7 +35,7 @@ export default function AdminRegistration() {
         onSubmit={(e) => {
           if (adminForm.password === adminForm.ConfirmPassword) {
             postAdminFormData(e);
-            navigate("/dashboard");
+            navigate("/emailsent");
           } else {
             // Show an error message or alert to the user
             alert("Password and Confirm Password must be same.");
