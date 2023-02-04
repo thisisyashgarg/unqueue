@@ -23,7 +23,7 @@ export default function AdminRegistration() {
       <form
         className="flex flex-col space-y-4 py-10"
         method="POST"
-        onSubmit={(e) => {
+        onSubmit={() => {
           if (adminForm.password === adminForm.ConfirmPassword) {
             signUpUserWithEmailPass(adminForm.email, adminForm.password);
             navigate("/emailsent");
