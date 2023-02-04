@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Domains from "./components/Domains";
 import Navbar from "./components/Navbar";
+import Error from "./components/Error";
 import AdminRegistration from "./components/AdminRegistration";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  useNavigate,
+} from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import AdminVerification from "./components/AdminVerificationPage";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const auth = getAuth();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log(user);
+      if (user === null) {
+        console.log(user);
+        navigate("/");
+      }
+    });
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -22,6 +43,7 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       { path: "/", element: <HomePage /> },
       {
@@ -42,9 +64,12 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/emailsent",
-        element:<AdminVerification />
-
-      }
+        element: <AdminVerification />,
+      },
+      {
+        path: "/error",
+        element: <Error />,
+      },
     ],
   },
 ]);

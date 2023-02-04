@@ -4,7 +4,7 @@ import ButtonCTA from "./ButtonCTA";
 import Heading from "./Heading";
 import InputField from "./InputField";
 import { handleChange } from "../utils/helper";
-import { postAdminFormData } from "../utils/postForms";
+import { signUpUserWithEmailPass } from "../data/Auth";
 
 export default function AdminRegistration() {
   const [adminForm, setAdminForm] = useState({
@@ -13,7 +13,7 @@ export default function AdminRegistration() {
     password: "",
     ConfirmPassword: "",
   });
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -24,9 +24,10 @@ export default function AdminRegistration() {
       action=""
         method="POST"
         className="flex flex-col space-y-4 py-10"
+        method="POST"
         onSubmit={(e) => {
           if (adminForm.password === adminForm.ConfirmPassword) {
-            postAdminFormData(e, adminForm);
+            signUpUserWithEmailPass(adminForm.email, adminForm.password);
             navigate("/emailsent");
           } else {
             // Show an error message or alert to the user
@@ -40,7 +41,8 @@ export default function AdminRegistration() {
           value={adminForm.orgName}
           onChange={() => handleChange(setAdminForm)}
           name="orgName"
-          type={"text"}
+          type="text"
+          minLength=""
         />
 
         <InputField
@@ -49,7 +51,8 @@ export default function AdminRegistration() {
           value={adminForm.email}
           onChange={() => handleChange(setAdminForm)}
           name="email"
-          type={"text"}
+          type="email"
+          minLength=""
         />
         {/* <div className="flex "> */}
         <InputField
@@ -58,7 +61,10 @@ export default function AdminRegistration() {
           value={adminForm.password}
           onChange={() => handleChange(setAdminForm)}
           name="password"
-          type={showPassword ? "text" : "password"}
+          type="password"
+          minLength="8"
+
+          // type={showPassword ? "text" : "password"}
         />
         {/* <button
             type="button"
@@ -76,9 +82,20 @@ export default function AdminRegistration() {
           onChange={() => handleChange(setAdminForm)}
           name="ConfirmPassword"
           type="password"
+          minLength="8"
         />
-        <ButtonCTA text="Register " />
+        <ButtonCTA text="Register" />
       </form>
+      <h1 className="pb-8 font-semibold text-3xl text-gray-500">or</h1>
+
+      <a>
+        <button
+          onClick={() => navigate("/login")}
+          className="px-48 py-5 rounded-md text-white font-semibold primary-color text-center hover:bg-sky-500 active:bg-sky-600"
+        >
+          Login
+        </button>
+      </a>
     </div>
   );
 }

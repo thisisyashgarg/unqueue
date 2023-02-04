@@ -6,12 +6,6 @@ import { handleChange } from "../utils/helper";
 import { postQID } from "../utils/postForms";
 
 export default function AvgWaitingTime() {
-  // const [waitingTime, setWaitingTime] = React.useState(0);
-
-  // function AverageWaitingTime(prevWaitingTime: number) {
-  //   // return setWaitingTime([...prevWaitingTime,'']);
-  // }
-
   const [QID, setQID] = useState({
     qidValue: "",
   });
@@ -31,6 +25,7 @@ export default function AvgWaitingTime() {
           name="qidValue"
           onChange={() => handleChange(setQID)}
           type="text"
+          minLength=""
         />
 
         <ButtonCTA text="Add User" />
