@@ -5,6 +5,7 @@ import InputField from "./InputField";
 import ButtonCTA from "./ButtonCTA";
 import { postLoginForm } from "../utils/postForms";
 import { useNavigate } from "react-router-dom";
+import { signInUserWithEmailPass } from "../data/Auth";
 
 export default function LoginPage() {
   const [loginForm, setLoginForm] = useState({
@@ -17,10 +18,11 @@ export default function LoginPage() {
       <Heading heading="Login" />
       <form
         className="flex flex-col space-y-4 py-10"
+        method="POST"
         onSubmit={(e) => {
-          postLoginForm(e, loginForm);
+          signInUserWithEmailPass(loginForm.email, loginForm.password);
+          //   navigate("/dashboard");
           // now check if user is valid, if yes, then redirect to dashboard, otherwise 403
-          navigate("/dashboard");
         }}
       >
         <InputField
@@ -30,6 +32,7 @@ export default function LoginPage() {
           onChange={() => handleChange(setLoginForm)}
           name="email"
           type="email"
+          minLength=""
         />
 
         <InputField
@@ -39,6 +42,7 @@ export default function LoginPage() {
           onChange={() => handleChange(setLoginForm)}
           name="password"
           type="password"
+          minLength="8"
         />
 
         <ButtonCTA text="Login" />

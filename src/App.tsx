@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import Domains from "./components/Domains";
 import Navbar from "./components/Navbar";
@@ -8,8 +8,25 @@ import Dashboard from "./components/Dashboard";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import AdminVerification from "./components/AdminVerificationPage";
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function App() {
+  // let home = <HomePage />;
+  // const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   const auth = getAuth();
+
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       const uid = user.uid;
+  //       navigate("/dashboard");
+  //     } else {
+  //       navigate("/login");
+  //     }
+  //   });
+  // }, []);
+
   return (
     <>
       <Navbar />
@@ -42,9 +59,8 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/emailsent",
-        element:<AdminVerification />
-
-      }
+        element: <AdminVerification />,
+      },
     ],
   },
 ]);

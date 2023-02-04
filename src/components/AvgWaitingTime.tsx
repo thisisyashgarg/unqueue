@@ -31,6 +31,7 @@ export default function AvgWaitingTime() {
           name="qidValue"
           onChange={() => handleChange(setQID)}
           type="text"
+          minLength=""
         />
 
         <ButtonCTA text="Add User" />

@@ -7,6 +7,7 @@ export default function InputField({
   onChange,
   name,
   type,
+  minLength,
 }) {
   return (
     <label className="flex flex-col p-4">
@@ -18,6 +19,7 @@ export default function InputField({
         onChange={onChange}
         name={name}
         type={type}
+        minLength={minLength}
       />
     </label>
   );
