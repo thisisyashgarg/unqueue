@@ -5,9 +5,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  sendSignInLinkToEmail
+  sendSignInLinkToEmail,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCbf2VhleTZS_ma0c2gK_jl0ojoCF_CCaA",
@@ -67,10 +66,13 @@ export async function logOut() {
 }
 
 
+
+
+
 const actionCodeSettings = {
   // URL you want to redirect back to. The domain (www.example.com) for this
   // URL must be in the authorized domains list in the Firebase Console.
-  url: 'http://localhost:1234',
+  url: 'http://localhost:1234/dashboard',
   // This must be true.
   handleCodeInApp: true,
   iOS: {
@@ -81,22 +83,25 @@ const actionCodeSettings = {
     installApp: true,
     minimumVersion: '12'
   },
-  dynamicLinkDomain: 'example.page.link'
+  dynamicLinkDomain: 'unqueue.page.link'
 };
 
-export async function emailAuthLink(email : string){
+export async function verifyEmail(email : string) {
 const auth = getAuth();
-sendSignInLinkToEmail(auth, email, actionCodeSettings)
-  .then(() => {
-    // The link was successfully sent. Inform the user.
-    // Save the email locally so you don't need to ask the user for it again
-    // if they open the link on the same device.
-    window.localStorage.setItem('emailForSignIn', email);
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode,errorMessage);
-    
-  })
+await sendSignInLinkToEmail(auth, email, actionCodeSettings)
+.then(() => {
+  // The link was successfully sent. Inform the user.
+  // Save the email locally so you don't need to ask the user for it again
+  // if they open the link on the same device.
+  window.localStorage.setItem('emailForSignIn', email);
+  // ...
+})
+.catch((error) => {
+  const errorCode = error.code;
+  const errorMessage = error.message;
+  console.log(errorCode,errorMessage)
+});
 }
+
+
+
