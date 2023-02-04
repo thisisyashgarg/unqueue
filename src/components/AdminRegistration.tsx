@@ -20,7 +20,9 @@ export default function AdminRegistration() {
   return (
     <div className="flex flex-col items-center p-10">
       <Heading heading="Admin Registration" />
-      <form
+      <form 
+      action=""
+        method="POST"
         className="flex flex-col space-y-4 py-10"
         onSubmit={(e) => {
           if (adminForm.password === adminForm.ConfirmPassword) {

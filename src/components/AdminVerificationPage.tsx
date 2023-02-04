@@ -18,7 +18,7 @@ export default function AdminVerification() {
           account. If you have have not recieved the email after a few minutes,
           please check your spam folder.
         </p>
-      </div>
+       </div>
     </div>
   );
 }
