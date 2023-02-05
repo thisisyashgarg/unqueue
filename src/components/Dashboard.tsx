@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AvgWaitingTime from "./AvgWaitingTime";
 import PeopleInQueue from "./PeopleInQueue";
-import { auth } from "../data/Auth";
+import { auth } from "../data/auth";
 import { onAuthStateChanged } from "@firebase/auth";
 
 export default function Dashboard() {

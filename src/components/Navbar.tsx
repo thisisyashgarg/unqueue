@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../images/logo unqueue.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { logOut } from "../data/Auth";
+import { logOut } from "../data/auth";
 
 export default function Navbar() {
   const currentRoute = useLocation();
