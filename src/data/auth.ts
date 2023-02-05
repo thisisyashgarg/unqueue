@@ -22,7 +22,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const fireApp = initializeApp(firebaseConfig);
-const auth = getAuth(fireApp);
+export const auth = getAuth(fireApp);
 
 export const actionCodeSettings = {
   // URL you want to redirect back to. The domain (www.example.com) for this
@@ -41,7 +41,6 @@ export const actionCodeSettings = {
   dynamicLinkDomain: "unqueue.page.link",
 };
 
-export { auth };
 export async function signInUserWithEmailPass(email: string, password: string) {
   console.log("sigin func called");
   await signInWithEmailAndPassword(auth, email, password)

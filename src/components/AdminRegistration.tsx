@@ -6,8 +6,8 @@ import InputField from "./InputField";
 import { handleChange } from "../utils/helper";
 import { signUpUserWithEmailPass } from "../data/Auth";
 import { sendSignInLinkToEmail } from "firebase/auth";
-import { auth } from "../data/Auth";
-import { actionCodeSettings } from "../data/auth.js";
+import { actionCodeSettings } from "../data/auth";
+import { auth } from "../data/auth";
 
 export default function AdminRegistration() {
   const [adminForm, setAdminForm] = useState({
