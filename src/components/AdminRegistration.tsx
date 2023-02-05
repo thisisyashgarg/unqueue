@@ -4,7 +4,7 @@ import ButtonCTA from "./ButtonCTA";
 import Heading from "./Heading";
 import InputField from "./InputField";
 import { handleChange } from "../utils/helper";
-import { signUpUserWithEmailPass } from "../data/Auth";
+import { signUpUserWithEmailPass } from "../data/auth";
 import { sendSignInLinkToEmail } from "firebase/auth";
 import { actionCodeSettings } from "../data/auth";
 import { auth } from "../data/auth";

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Heading from "./Heading";
-import axios from "axios";
 
 export default function PeopleInQueue() {
   const [peopleInQueue, setPeopleInQueue] = useState([]);
