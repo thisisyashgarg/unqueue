@@ -12,6 +12,7 @@ export default function Dashboard() {
     onAuthStateChanged(auth, (user) => {
       console.log(user);
       if (user === null) {
+        alert("Error 403: You do not have the permissions");
         navigate("/");
       }
     });
