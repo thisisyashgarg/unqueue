@@ -38,7 +38,7 @@ export const actionCodeSettings = {
     installApp: true,
     minimumVersion: "12",
   },
-  dynamicLinkDomain: "unqueue.netlify.app.page.link",
+  dynamicLinkDomain: "unqueue.netlify.page.link",
 };
 
 export async function signInUserWithEmailPass(email: string, password: string) {
