@@ -27,7 +27,7 @@ export const auth = getAuth(fireApp);
 export const actionCodeSettings = {
   // URL you want to redirect back to. The domain (www.example.com) for this
   // URL must be in the authorized domains list in the Firebase Console.
-  url: "https://www.unqueue.netlify.app/dashboard",
+  url: "http://localhost:1234/dashboard",
   // This must be true.
   handleCodeInApp: true,
   iOS: {
@@ -38,11 +38,11 @@ export const actionCodeSettings = {
     installApp: true,
     minimumVersion: "12",
   },
-  dynamicLinkDomain: "unqueue.netlify.page.link",
+  dynamicLinkDomain: "unqueue.page.link",
 };
 
 export async function signInUserWithEmailPass(email: string, password: string) {
-  console.log("sigin func called");
+  console.log("sigin function called");
   await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
