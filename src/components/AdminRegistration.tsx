@@ -30,17 +30,17 @@ export default function AdminRegistration() {
         onSubmit={() => {
           if (adminForm.password === adminForm.ConfirmPassword) {
             signUpUserWithEmailPass(adminForm.email, adminForm.password);
-            sendSignInLinkToEmail(auth, adminForm.email, actionCodeSettings)
-              .then(() => {
-                window.localStorage.setItem("emailForSignIn", adminForm.email);
-                console.log("code sent");
-              })
-              .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorMessage, errorCode);
-              });
-            navigate("/emailsent");
+            // sendSignInLinkToEmail(auth, adminForm.email, actionCodeSettings)
+            //   .then(() => {
+            //     window.localStorage.setItem("emailForSignIn", adminForm.email);
+            //     console.log("code sent");
+            //   })
+            //   .catch((error) => {
+            //     const errorCode = error.code;
+            //     const errorMessage = error.message;
+            //     console.log(errorMessage, errorCode);
+            //   });
+            navigate("/login");
           } else {
             // Show an error message or alert to the user
             alert("Password and Confirm Password must be same.");
