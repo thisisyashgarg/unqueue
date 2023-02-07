@@ -44,7 +44,7 @@ const appRouter = createBrowserRouter([
         element: <AdminRegistration />,
       },
       {
-        path: "/dashboard?apiKey=AIzaSyAGBDotU32BnEcLFS6w4giHiYgLL50E5PA&oobCode=sL_Fc_O86LUF8B1ZRvGvbN9UGSDgPRMOx1U6pr3DzdoAAAGGKsu2xg&mode=signIn&lang=en",
+        path: "/dashboard",
         element: <Dashboard />,
       },
       {
