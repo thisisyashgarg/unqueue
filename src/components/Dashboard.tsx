@@ -23,7 +23,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchData(setDataFromAPI);
-  });
+  }, []);
 
   return (
     <div className="grid grid-cols-2 pt-10">
