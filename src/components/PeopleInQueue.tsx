@@ -2,13 +2,26 @@ import React, { useState } from "react";
 import Heading from "./Heading";
 import { toggleShowAll } from "../utils/helper";
 
-export default function PeopleInQueue({ peopleInQueue }) {
+export default function PeopleInQueue({ peopleInQueue, setPeopleInQueue }) {
   // console.log(`People in q - ${props}`);
   const [showAll, setShowAll] = useState(false);
+
+  function removeTopUserFromQueue(setPeopleInQueue) {
+    setPeopleInQueue((prev: object[]) => {
+      // let modified = prev;
+      console.log(prev);
+      return [...prev];
+      // modified.shift();
+      // return modified;
+    });
+  }
 
   return (
     <div className="grid grid-cols justify-center overflow-scroll">
       <Heading heading="People In Queue" />
+      <button onClick={() => removeTopUserFromQueue(setPeopleInQueue)}>
+        Remove
+      </button>
       {(showAll ? peopleInQueue : peopleInQueue.slice(0, 3)).map(
         (user: { name: ""; qid: "" }, index: number) => {
           return (

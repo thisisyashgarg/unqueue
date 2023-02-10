@@ -4,13 +4,12 @@ import AvgWaitingTime from "./AvgWaitingTime";
 import PeopleInQueue from "./PeopleInQueue";
 import { auth } from "../data/auth";
 import { onAuthStateChanged } from "@firebase/auth";
-import { fetchData } from "../data/fetchData";
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const [dataFromAPI, setDataFromAPI] = useState<object[]>([]);
   const [peopleInQueue, setPeopleInQueue] = useState<object[]>([]);
-  console.log(dataFromAPI);
+  // console.log(dataFromAPI);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -22,12 +21,22 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-    fetchData(setDataFromAPI);
-  });
+    //adding api data into data from api
+    setDataFromAPI([
+      { name: "yash", qid: "HOS1234" },
+      { name: "ankit", qid: "HOS1235" },
+      { name: "aman", qid: "HOS1236" },
+    ]);
+    console.log(dataFromAPI);
+    // fetchData(setDataFromAPI);
+  }, []);
 
   return (
     <div className="grid grid-cols-2 pt-10">
-      <PeopleInQueue peopleInQueue={peopleInQueue} />
+      <PeopleInQueue
+        peopleInQueue={peopleInQueue}
+        setPeopleInQueue={setPeopleInQueue}
+      />
       <AvgWaitingTime
         dataFromAPI={dataFromAPI}
         setPeopleInQueue={setPeopleInQueue}

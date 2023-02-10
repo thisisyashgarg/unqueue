@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
@@ -30,4 +30,12 @@ export async function fetchData(setDataFromAPI: Function) {
   });
   //   console.log(arrayOfObjects);
   setDataFromAPI(arrayOfObjects);
+}
+
+export async function sendLoggedInUserData() {
+  console.log("sendLoggedInUserData called");
+  await addDoc(collection(db, "cities"), {
+    name: "Tokyo",
+    country: "Japan",
+  });
 }

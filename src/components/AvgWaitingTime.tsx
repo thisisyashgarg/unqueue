@@ -10,7 +10,6 @@ export default function AvgWaitingTime({ dataFromAPI, setPeopleInQueue }) {
   const [QID, setQID] = useState({
     qidValue: "",
   });
-  console.log(QID);
   const [errorMsg, setErrorMsg] = useState("");
 
   return (

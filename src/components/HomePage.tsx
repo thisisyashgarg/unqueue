@@ -3,7 +3,7 @@ import React from "react";
 import ButtonCTA from "./ButtonCTA";
 import Heading from "./Heading";
 import { Link } from "react-router-dom";
-import { fetchData } from "../data/fetchData";
+import { fetchData } from "../data/data";
 
 export default function HomePage() {
   // const user = signInUserWithEmailPass("yg@yg.com", "qwertyui");
