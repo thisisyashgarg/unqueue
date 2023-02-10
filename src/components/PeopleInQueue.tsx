@@ -19,9 +19,9 @@ export default function PeopleInQueue({ peopleInQueue, setPeopleInQueue }) {
   return (
     <div className="grid grid-cols justify-center overflow-scroll">
       <Heading heading="People In Queue" />
-      <button onClick={() => removeTopUserFromQueue(setPeopleInQueue)}>
+      {/* <button onClick={() => removeTopUserFromQueue(setPeopleInQueue)}>
         Remove
-      </button>
+      </button> */}
       {(showAll ? peopleInQueue : peopleInQueue.slice(0, 3)).map(
         (user: { name: ""; qid: "" }, index: number) => {
           return (

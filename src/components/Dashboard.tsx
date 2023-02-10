@@ -4,6 +4,7 @@ import AvgWaitingTime from "./AvgWaitingTime";
 import PeopleInQueue from "./PeopleInQueue";
 import { auth } from "../data/auth";
 import { onAuthStateChanged } from "@firebase/auth";
+import { fetchData } from "../data/data";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -22,13 +23,13 @@ export default function Dashboard() {
 
   useEffect(() => {
     //adding api data into data from api
-    setDataFromAPI([
-      { name: "yash", qid: "HOS1234" },
-      { name: "ankit", qid: "HOS1235" },
-      { name: "aman", qid: "HOS1236" },
-    ]);
-    console.log(dataFromAPI);
-    // fetchData(setDataFromAPI);
+    // setDataFromAPI([
+    //   { name: "yash", qid: "HOS1234" },
+    //   { name: "ankit", qid: "HOS1235" },
+    //   { name: "aman", qid: "HOS1236" },
+    // ]);
+    // console.log(dataFromAPI);
+    fetchData(setDataFromAPI);
   }, []);
 
   return (
