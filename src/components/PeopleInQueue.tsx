@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Heading from "./Heading";
 import { toggleShowAll } from "../utils/helper";
 import { removeTopUserFromQueue } from "../utils/helper";
+import { checkQueueOfExistingUser } from "../data/data";
+// import { checkQueueOfExistingUser } from "../data/data";
 
 export default function PeopleInQueue({ peopleInQueue, setPeopleInQueue }) {
   // console.log(`People in q - ${props}`);
@@ -13,6 +15,10 @@ export default function PeopleInQueue({ peopleInQueue, setPeopleInQueue }) {
       <button onClick={() => removeTopUserFromQueue(setPeopleInQueue)}>
         Remove
       </button>
+      {/* <button onClick={() => checkQueueOfExistingUser(setPeopleInQueue)}>
+        test
+      </button> */}
+      {/* <button onClick={() => checkQueueOfExistingUser()}>test</button> */}
       {(showAll ? peopleInQueue : peopleInQueue.slice(0, 3)).map(
         (user: { name: ""; qid: "" }, index: number) => {
           return (

@@ -1,6 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { getFirestore, query } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -40,10 +46,29 @@ export async function fetchData(setDataFromAPI: Function) {
 
 export async function sendLoggedInUserData(peopleInQueue: object[]) {
   console.log("sendLoggedInUserData called");
-  onAuthStateChanged(auth, (user) => {
-    addDoc(collection(db, "adminData"), {
-      name: user.uid,
+  // console.log(peopleInQueue);
+  onAuthStateChanged(auth, async (user) => {
+    // console.log(user.uid);
+    addDoc(collection(db, user.uid), {
       peopleInQueue: peopleInQueue,
     });
+
+    // const data = doc(db, user.uid, `${peopleInQueue}`);
+    // // Set the "capital" field of the city 'DC'
+    // await updateDoc(data, {
+    //   peopleInQueue: true,
+    // });
+    console.log("admin data successfully sent to db");
+  });
+}
+
+export async function checkQueueOfExistingUser(setPeopleInQueue) {
+  onAuthStateChanged(auth, async (user) => {
+    const querySnapshot = await getDocs(collection(db, user.uid));
+    let queueData = [];
+    querySnapshot.forEach((doc) => {
+      queueData = doc.data().peopleInQueue;
+    });
+    setPeopleInQueue(queueData);
   });
 }

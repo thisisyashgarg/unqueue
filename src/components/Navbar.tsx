@@ -2,8 +2,9 @@ import React from "react";
 import Logo from "../images/logo unqueue.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { logOut } from "../data/auth";
+import { sendLoggedInUserData } from "../data/data";
 
-export default function Navbar() {
+export default function Navbar({ peopleInQueue }) {
   const currentRoute = useLocation();
   const navigate = useNavigate();
 
@@ -16,7 +17,8 @@ export default function Navbar() {
 
       {currentRoute.pathname === "/dashboard" && (
         <a
-          onClick={() => {
+          onClick={async () => {
+            await sendLoggedInUserData(peopleInQueue);
             const isLoggedOut = logOut();
             if (isLoggedOut) {
               navigate("/login");

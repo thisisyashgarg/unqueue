@@ -4,7 +4,10 @@ import Heading from "./Heading";
 import InputField from "./InputField";
 import ButtonCTA from "./ButtonCTA";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { auth } from "../data/auth";
+import { checkQueueOfExistingUser } from "../data/data";
+import { useOutletContext } from "react-router-dom";
 
 export default function LoginPage() {
   const [loginForm, setLoginForm] = useState({
@@ -13,7 +16,7 @@ export default function LoginPage() {
   });
 
   const navigate = useNavigate();
-  const auth = getAuth();
+  const [peopleInQueue, setPeopleInQueue]: object[] = useOutletContext();
 
   return (
     <div className="flex flex-col items-center p-10">
@@ -37,7 +40,12 @@ export default function LoginPage() {
               const errorMessage = error.message;
               console.log(errorMessage, errorCode);
             });
+          // onAuthStateChanged(auth, (user) => {
+          //   checkQueueOfexistingUser();
+          // });
+
           navigate("/dashboard");
+          // checkQueueOfExistingUser(setPeopleInQueue);
         }}
       >
         <InputField
