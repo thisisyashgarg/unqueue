@@ -41,6 +41,7 @@ export default function Dashboard() {
       <AvgWaitingTime
         dataFromAPI={dataFromAPI}
         setPeopleInQueue={setPeopleInQueue}
+        peopleInQueue={peopleInQueue}
       />
     </div>
   );

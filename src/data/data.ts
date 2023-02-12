@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs, addDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
@@ -20,6 +21,11 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
+
+// auth
+const fireApp = initializeApp(firebaseConfig);
+const auth = getAuth(fireApp);
+
 export async function fetchData(setDataFromAPI: Function) {
   let arrayOfObjects: object[] = [];
   const querySnapshot = await getDocs(collection(db, "data"));
@@ -32,10 +38,12 @@ export async function fetchData(setDataFromAPI: Function) {
   setDataFromAPI(arrayOfObjects);
 }
 
-export async function sendLoggedInUserData() {
+export async function sendLoggedInUserData(peopleInQueue: object[]) {
   console.log("sendLoggedInUserData called");
-  await addDoc(collection(db, "cities"), {
-    name: "Tokyo",
-    country: "Japan",
+  onAuthStateChanged(auth, (user) => {
+    addDoc(collection(db, "adminData"), {
+      name: user.uid,
+      peopleInQueue: peopleInQueue,
+    });
   });
 }

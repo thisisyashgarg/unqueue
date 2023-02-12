@@ -5,7 +5,6 @@ import InputField from "./InputField";
 import ButtonCTA from "./ButtonCTA";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
-import { sendLoggedInUserData } from "../data/data";
 
 export default function LoginPage() {
   const [loginForm, setLoginForm] = useState({
@@ -15,8 +14,6 @@ export default function LoginPage() {
 
   const navigate = useNavigate();
   const auth = getAuth();
-
-  sendLoggedInUserData();
 
   return (
     <div className="flex flex-col items-center p-10">
