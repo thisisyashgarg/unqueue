@@ -4,4 +4,4 @@ UnQueue eliminates physical queues by joining virtual queues from your device, r
 
 ![Alt text](src/images/homepage.png "Landing Page")
 ![Alt text](src/images/domains.png "Landing Page")
-![Alt text](src/images/dashboard.png"Landing Page")
+![Alt text](src/images/dashboard.png "Landing Page")
