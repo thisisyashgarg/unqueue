@@ -6,6 +6,9 @@ import { findValidUser } from "../utils/helper";
 import { addUserToQueue } from "../utils/helper";
 import { handleKeyDown } from "../utils/helper";
 import { isUserAlreadyInQueue } from "../utils/helper";
+import { useSelector } from "react-redux";
+import { domainSliceReducer } from "../utils/domainSlice";
+import { RootState } from "../utils/store";
 
 export default function AvgWaitingTime({
   dataFromAPI,
@@ -16,6 +19,8 @@ export default function AvgWaitingTime({
     qidValue: "",
   });
   const [errorMsg, setErrorMsg] = useState("");
+  const domainName = useSelector((state: RootState) => state.app.domainName);
+  console.log(peopleInQueue);
 
   return (
     <div className="grid grid-cols justify-center max-h-72 ">
@@ -46,9 +51,16 @@ export default function AvgWaitingTime({
       <button
         onClick={() => {
           const validUser = findValidUser(dataFromAPI, QID, setErrorMsg);
-          if (!isUserAlreadyInQueue(setErrorMsg, validUser, peopleInQueue)) {
+          if (
+            !isUserAlreadyInQueue(setErrorMsg, validUser, peopleInQueue)
+            // &&
+            // QID.qidValue.slice(-3) === domainName
+          ) {
             addUserToQueue(setErrorMsg, setPeopleInQueue, validUser);
           }
+          // else {
+          //   setErrorMsg("Enter valid QID");
+          // }
         }}
         className="px-48 py-5 rounded-md text-white font-semibold primary-color text-center hover:bg-sky-500 active:bg-sky-600"
       >

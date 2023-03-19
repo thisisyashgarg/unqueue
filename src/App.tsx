@@ -9,13 +9,17 @@ import Dashboard from "./components/Dashboard";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import AdminVerification from "./components/AdminVerificationPage";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 function App() {
   const [peopleInQueue, setPeopleInQueue] = useState<object[]>([]);
   return (
     <>
-      <Navbar peopleInQueue={peopleInQueue} />
-      <Outlet context={[peopleInQueue, setPeopleInQueue]} />
+      <Provider store={store}>
+        <Navbar peopleInQueue={peopleInQueue} />
+        <Outlet context={[peopleInQueue, setPeopleInQueue]} />
+      </Provider>
     </>
   );
 }

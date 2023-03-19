@@ -8,8 +8,6 @@ import { signUpUserWithEmailPass } from "../data/auth";
 
 import { addUserToFirestore } from "../data/data";
 
-
-
 export default function AdminRegistration() {
   const [adminForm, setAdminForm] = useState({
     orgName: "",
@@ -32,9 +30,8 @@ export default function AdminRegistration() {
           if (adminForm.password === adminForm.ConfirmPassword) {
             signUpUserWithEmailPass(adminForm.email, adminForm.password);
 
-
             //send admin data to db
-            addUserToFirestore();
+            // addUserToFirestore();
 
             navigate("/login");
           } else {

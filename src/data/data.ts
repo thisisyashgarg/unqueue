@@ -33,6 +33,7 @@ const fireApp = initializeApp(firebaseConfig);
 const auth = getAuth(fireApp);
 
 export async function fetchData(setDataFromAPI: Function) {
+  console.log("data fetched ");
   let arrayOfObjects: object[] = [];
   const querySnapshot = await getDocs(collection(db, "data"));
   querySnapshot.forEach((doc) => {

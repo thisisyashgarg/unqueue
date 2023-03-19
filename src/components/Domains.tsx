@@ -1,12 +1,18 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { DOMAIN_DATA } from "../data";
 import Heading from "./Heading";
 import { Link } from "react-router-dom";
+import { addDomainName } from "../utils/domainSlice";
 
 export default function Domains() {
   console.log(DOMAIN_DATA);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  function addDomainNameToStore(domainName: string) {
+    dispatch(addDomainName(domainName));
+  }
+
   return (
     <>
       <Heading heading="Choose your domain" />
@@ -14,7 +20,7 @@ export default function Domains() {
         {DOMAIN_DATA.map((domain, index) => {
           return (
             <Link
-              // onClick={}
+              onClick={() => addDomainNameToStore(domain.code)}
               to="/admin"
               key={index}
               className="flex flex-col py-4 bg-gray-50 border border-gray-300 m-4 p-4 rounded-md w-60 h-56 hover:shadow-lg "
