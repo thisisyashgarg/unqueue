@@ -5,9 +5,7 @@ import Heading from "./Heading";
 import InputField from "./InputField";
 import { handleChange } from "../utils/helper";
 import { signUpUserWithEmailPass } from "../data/auth";
-import { sendSignInLinkToEmail } from "firebase/auth";
-import { actionCodeSettings } from "../data/auth";
-import { auth } from "../data/auth";
+import { addUserToFirestore } from "../data/data";
 
 export default function AdminRegistration() {
   const [adminForm, setAdminForm] = useState({
@@ -30,16 +28,10 @@ export default function AdminRegistration() {
         onSubmit={() => {
           if (adminForm.password === adminForm.ConfirmPassword) {
             signUpUserWithEmailPass(adminForm.email, adminForm.password);
-            // sendSignInLinkToEmail(auth, adminForm.email, actionCodeSettings)
-            //   .then(() => {
-            //     window.localStorage.setItem("emailForSignIn", adminForm.email);
-            //     console.log("code sent");
-            //   })
-            //   .catch((error) => {
-            //     const errorCode = error.code;
-            //     const errorMessage = error.message;
-            //     console.log(errorMessage, errorCode);
-            //   });
+
+            //send admin data to db
+            addUserToFirestore();
+
             navigate("/login");
           } else {
             // Show an error message or alert to the user

@@ -45,22 +45,33 @@ export async function fetchData(setDataFromAPI: Function) {
 }
 
 export async function sendLoggedInUserData(peopleInQueue: object[]) {
-  console.log("sendLoggedInUserData called");
-  // console.log(peopleInQueue);
-  onAuthStateChanged(auth, async (user) => {
-    // console.log(user.uid);
-    addDoc(collection(db, user.uid), {
-      peopleInQueue: peopleInQueue,
-    });
-
-    // const data = doc(db, user.uid, `${peopleInQueue}`);
-    // // Set the "capital" field of the city 'DC'
-    // await updateDoc(data, {
-    //   peopleInQueue: true,
-    // });
-    console.log("admin data successfully sent to db");
-  });
+  // console.log("sendLoggedInUserData called");
+  // // console.log(peopleInQueue);
+  // onAuthStateChanged(auth, async (user) => {
+  //   // console.log(user.uid);
+  //   addDoc(collection(db, user.uid), {});
+  //   // const data = doc(db, user.uid, `${peopleInQueue}`);
+  //   // // Set the "capital" field of the city 'DC'
+  //   // await updateDoc(data, {
+  //   //   peopleInQueue: true,
+  //   // });
+  //   console.log("admin data successfully sent to db");
+  // });
 }
+
+export const addUserToFirestore = () => {
+  addDoc(collection(db, "admin"), {
+    "Food Chains": {
+      name: "mcd",
+      location: "Delhi",
+    },
+    Hospital: {
+      name: "aims",
+      location: "Delhi",
+    },
+  });
+  console.log("data added to db - admin ");
+};
 
 export async function checkQueueOfExistingUser(setPeopleInQueue) {
   onAuthStateChanged(auth, async (user) => {

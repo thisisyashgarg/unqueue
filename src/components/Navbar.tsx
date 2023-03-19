@@ -18,7 +18,7 @@ export default function Navbar({ peopleInQueue }) {
       {currentRoute.pathname === "/dashboard" && (
         <a
           onClick={async () => {
-            await sendLoggedInUserData(peopleInQueue);
+            // await sendLoggedInUserData(peopleInQueue);
             const isLoggedOut = logOut();
             if (isLoggedOut) {
               navigate("/login");
