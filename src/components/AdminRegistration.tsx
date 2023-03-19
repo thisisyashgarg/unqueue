@@ -5,7 +5,10 @@ import Heading from "./Heading";
 import InputField from "./InputField";
 import { handleChange } from "../utils/helper";
 import { signUpUserWithEmailPass } from "../data/auth";
+
 import { addUserToFirestore } from "../data/data";
+
+
 
 export default function AdminRegistration() {
   const [adminForm, setAdminForm] = useState({
@@ -28,6 +31,7 @@ export default function AdminRegistration() {
         onSubmit={() => {
           if (adminForm.password === adminForm.ConfirmPassword) {
             signUpUserWithEmailPass(adminForm.email, adminForm.password);
+
 
             //send admin data to db
             addUserToFirestore();
