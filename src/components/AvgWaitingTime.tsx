@@ -5,12 +5,16 @@ import { handleChange } from "../utils/helper";
 import { findValidUser } from "../utils/helper";
 import { addUserToQueue } from "../utils/helper";
 import { handleKeyDown } from "../utils/helper";
+import { isUserAlreadyInQueue } from "../utils/helper";
 
-export default function AvgWaitingTime({ dataFromAPI, setPeopleInQueue }) {
+export default function AvgWaitingTime({
+  dataFromAPI,
+  setPeopleInQueue,
+  peopleInQueue,
+}) {
   const [QID, setQID] = useState({
     qidValue: "",
   });
-  console.log(QID);
   const [errorMsg, setErrorMsg] = useState("");
 
   return (
@@ -42,7 +46,9 @@ export default function AvgWaitingTime({ dataFromAPI, setPeopleInQueue }) {
       <button
         onClick={() => {
           const validUser = findValidUser(dataFromAPI, QID, setErrorMsg);
-          addUserToQueue(setErrorMsg, setPeopleInQueue, validUser);
+          if (!isUserAlreadyInQueue(setErrorMsg, validUser, peopleInQueue)) {
+            addUserToQueue(setErrorMsg, setPeopleInQueue, validUser);
+          }
         }}
         className="px-48 py-5 rounded-md text-white font-semibold primary-color text-center hover:bg-sky-500 active:bg-sky-600"
       >

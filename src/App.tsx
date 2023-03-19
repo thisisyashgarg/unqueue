@@ -1,29 +1,21 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Domains from "./components/Domains";
 import Navbar from "./components/Navbar";
 import Error from "./components/Error";
 import AdminRegistration from "./components/AdminRegistration";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-  useNavigate,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import AdminVerification from "./components/AdminVerificationPage";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function App() {
-  const navigate = useNavigate();
-  const auth = getAuth();
-
+  const [peopleInQueue, setPeopleInQueue] = useState<object[]>([]);
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <Navbar peopleInQueue={peopleInQueue} />
+      <Outlet context={[peopleInQueue, setPeopleInQueue]} />
     </>
   );
 }

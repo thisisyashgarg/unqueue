@@ -46,3 +46,23 @@ export function handleKeyDown() {
 export const toggleShowAll = (showAll: boolean, setShowAll: Function) => {
   setShowAll(!showAll);
 };
+
+export function removeTopUserFromQueue(setPeopleInQueue) {
+  setPeopleInQueue((prev: object[]) => {
+    return [...prev.slice(1, prev.length)];
+  });
+}
+
+export function isUserAlreadyInQueue(
+  setErrorMsg: Function,
+  validUser,
+  peopleInQueue: object[]
+): boolean {
+  for (let i = 0; i < peopleInQueue.length; i++) {
+    if (peopleInQueue[i].qid === validUser.qid) {
+      setErrorMsg("User is already in the queue");
+      return true;
+    }
+  }
+  return false;
+}
