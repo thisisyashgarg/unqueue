@@ -52,15 +52,13 @@ export default function AvgWaitingTime({
         onClick={() => {
           const validUser = findValidUser(dataFromAPI, QID, setErrorMsg);
           if (
-            !isUserAlreadyInQueue(setErrorMsg, validUser, peopleInQueue)
-            // &&
-            // QID.qidValue.slice(-3) === domainName
+            !isUserAlreadyInQueue(setErrorMsg, validUser, peopleInQueue) &&
+            QID.qidValue.slice(-3) === domainName
           ) {
             addUserToQueue(setErrorMsg, setPeopleInQueue, validUser);
+          } else {
+            setErrorMsg("Enter valid QID");
           }
-          // else {
-          //   setErrorMsg("Enter valid QID");
-          // }
         }}
         className="px-48 py-5 rounded-md text-white font-semibold primary-color text-center hover:bg-sky-500 active:bg-sky-600"
       >
