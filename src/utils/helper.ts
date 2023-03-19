@@ -1,5 +1,5 @@
 export function handleChange(setFunction: Function) {
-  const { name, value } = event.target;
+  const { name, value } = event.target as HTMLInputElement;
   setFunction((prev) => {
     return {
       ...prev,

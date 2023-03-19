@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { addDomainName } from "../utils/domainSlice";
 
 export default function Domains() {
-  console.log(DOMAIN_DATA);
   const dispatch = useDispatch();
 
   function addDomainNameToStore(domainName: string) {

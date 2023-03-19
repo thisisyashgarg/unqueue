@@ -7,7 +7,6 @@ import { addUserToQueue } from "../utils/helper";
 import { handleKeyDown } from "../utils/helper";
 import { isUserAlreadyInQueue } from "../utils/helper";
 import { useSelector } from "react-redux";
-import { domainSliceReducer } from "../utils/domainSlice";
 import { RootState } from "../utils/store";
 
 export default function AvgWaitingTime({
@@ -20,7 +19,6 @@ export default function AvgWaitingTime({
   });
   const [errorMsg, setErrorMsg] = useState("");
   const domainName = useSelector((state: RootState) => state.app.domainName);
-  console.log(peopleInQueue);
 
   return (
     <div className="grid grid-cols justify-center max-h-72 ">

@@ -10,7 +10,6 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [dataFromAPI, setDataFromAPI] = useState<object[]>([]);
   const [peopleInQueue, setPeopleInQueue]: object[] = useOutletContext();
-  console.log(dataFromAPI);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
