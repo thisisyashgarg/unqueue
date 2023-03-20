@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    font-family: "Montserrat";
-  }
-}
-
 .input-color {
   background-color: #f9f9f9;
 }
