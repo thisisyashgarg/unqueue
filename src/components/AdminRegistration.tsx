@@ -6,8 +6,6 @@ import InputField from "./InputField";
 import { handleChange } from "../utils/helper";
 import { signUpUserWithEmailPass } from "../data/auth";
 
-import { addUserToFirestore } from "../data/data";
-
 export default function AdminRegistration() {
   const [adminForm, setAdminForm] = useState({
     orgName: "",
@@ -15,7 +13,35 @@ export default function AdminRegistration() {
     password: "",
     ConfirmPassword: "",
   });
-  // const [showPassword, setShowPassword] = useState(false);
+  const [lat, setLat] = useState(null);
+  const [lon, setLon] = useState(null);
+  const [address, setAddress] = useState("");
+
+  navigator.geolocation.getCurrentPosition((position) => {
+    setLat(position.coords.latitude);
+    setLon(position.coords.longitude);
+  });
+
+  function cityName() {
+    if (lat && lon) {
+      fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const city =
+            data.address.city ||
+            data.address.town ||
+            data.address.village ||
+            data.address.hamlet;
+          setAddress(city);
+          return console.log(address);
+        })
+        .catch((error) => console.log(error));
+    }
+  }
+
+  const currentCity = cityName();
 
   const navigate = useNavigate();
 

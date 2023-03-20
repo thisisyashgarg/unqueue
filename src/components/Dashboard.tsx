@@ -4,14 +4,12 @@ import AvgWaitingTime from "./AvgWaitingTime";
 import PeopleInQueue from "./PeopleInQueue";
 import { auth } from "../data/auth";
 import { onAuthStateChanged } from "@firebase/auth";
-import { fetchData } from "../data/data";
 import { getDataFromRealtimeDB } from "../data/dataFromRealtimeDB";
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const [dataFromAPI, setDataFromAPI] = useState<object[]>([]);
   const [peopleInQueue, setPeopleInQueue]: object[] = useOutletContext();
-  console.log(`data from api - ${dataFromAPI}`);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
